@@ -13,7 +13,6 @@ class MenuTableViewController: UITableViewController {
     //MARK: - Properties
     var category: String!
     var menuItems = [MenuItem]()
-    let menuController = MenuController()
     
     //MARK: - Methods
 
@@ -22,7 +21,7 @@ class MenuTableViewController: UITableViewController {
         
         title = category.capitalized
         
-        menuController.fetchMenuItems(forCategory: category) { menuItems in
+        MenuController.shared.fetchMenuItems(forCategory: category) { menuItems in
             guard let menuItems = menuItems else { return }
             updateUI(with: menuItems)
         }
@@ -57,6 +56,7 @@ class MenuTableViewController: UITableViewController {
         func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
             let menuItem = menuItems[indexPath.row]
             cell.textLabel?.text = menuItem.name
+            
             cell.detailTextLabel?.text = "$\(menuItem.price)"
         }
     /*
@@ -94,14 +94,17 @@ class MenuTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard segue.identifier == "MenuDetailSegue" else { return }
+        
+        let controller = segue.destination as! MenuItemDetailViewController
+        
+        let index = tableView.indexPathForSelectedRow!.row
+        
+        controller.menuItem = menuItems[index]
     }
-    */
 
 }
