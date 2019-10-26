@@ -9,9 +9,30 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    
+    //MARK: - Properties
+    var category: String!
+    var menuItems = [MenuItem]()
+    let menuController = MenuController()
+    
+    //MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = category.capitalized
+        
+        menuController.fetchMenuItems(forCategory: category) { menuItems in
+            guard let menuItems = menuItems else { return }
+            updateUI(with: menuItems)
+        }
+        
+        func updateUI(with menuItems: [MenuItem]){
+            DispatchQueue.main.async {
+                self.menuItems = menuItems
+                self.tableView.reloadData()
+            }
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,26 +43,22 @@ class MenuTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menuItems.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellIdentifier", for: indexPath)
+            configure(cell, forItemAt: indexPath)
+            return cell
+        }
+        
+        func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+            let menuItem = menuItems[indexPath.row]
+            cell.textLabel?.text = menuItem.name
+            cell.detailTextLabel?.text = "$\(menuItem.price)"
+        }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -58,7 +75,7 @@ class MenuTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

@@ -93,8 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				9400498821C42868006E4F3B /* CategoryTableViewController.swift */,
-				9400498E21C428C9006E4F3B /* MenuItemDetailViewController.swift */,
 				9400498A21C42883006E4F3B /* MenuTableViewController.swift */,
+				9400498E21C428C9006E4F3B /* MenuItemDetailViewController.swift */,
 				9400498C21C42896006E4F3B /* OrderTableViewController.swift */,
 				9400499621C4307F006E4F3B /* MenuController.swift */,
 			);
@@ -141,6 +141,7 @@
 				TargetAttributes = {
 					9400496F21C41DCF006E4F3B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -343,7 +344,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enigvor.Restaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -361,7 +362,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.enigvor.Restaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

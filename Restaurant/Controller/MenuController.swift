@@ -9,7 +9,7 @@
 import Foundation
 
 class MenuController {
-    let baseURL = URL(string: "http://api.armenu.net:8090/")!
+    let baseURL = URL(string: "http://server.getoutfit.ru:8090/")!
     
     //@escaping - атрибут
     func fetchCategories(completion: @escaping ([String]?)-> Void) {
@@ -19,7 +19,7 @@ class MenuController {
                 completion(nil)
                 return
             }
-            guard let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            guard let jsonDictionary = ((try? JSONSerialization.jsonObject(with: data) as? [String: Any]) as [String : Any]??) else {
                 completion(nil)
                 return
             }
