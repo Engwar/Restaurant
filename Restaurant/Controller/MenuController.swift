@@ -12,6 +12,8 @@ class MenuController {
     
     static let shared = MenuController()
     
+    var order = Order()
+    
     let baseURL = URL(string: "http://server.getoutfit.ru:8090/")!
     
     //@escaping - атрибут

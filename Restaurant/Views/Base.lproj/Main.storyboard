@@ -126,6 +126,9 @@
                                                 <state key="normal" title="Add ($99.99)">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="orderButtonTaped:" destination="F1c-cc-ii2" eventType="touchUpInside" id="vjb-a0-v4i"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -142,6 +145,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpJ-VP-AwD"/>
                     </view>
+                    <connections>
+                        <outlet property="addToOrderButton" destination="AJE-04-ieF" id="JBc-he-6lB"/>
+                        <outlet property="detailLabel" destination="H6N-rC-FfN" id="Xid-dr-b7y"/>
+                        <outlet property="imageView" destination="Koy-Od-EV5" id="jj8-k2-q4Q"/>
+                        <outlet property="titleLable" destination="q1n-tI-gcy" id="Oke-Am-EvT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YF0-gt-txs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jlf-GN-jJj">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCellIdentifier" id="jlf-GN-jJj">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jlf-GN-jJj" id="ZQP-UL-hoH">
